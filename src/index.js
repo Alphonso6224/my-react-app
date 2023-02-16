@@ -1,17 +1,34 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import { name, age } from "./person.js";
+import Message from "./Message.js";
+
+/**
+ * Composant dans Composant
+ * @param {*} props 
+ * @returns 
+ */
+function FirstElement(props) {
+  return (
+    <div>
+      <h1>Hello React!</h1>
+      <h2>I am a {props.color} Car !</h2>
+      <Message/>
+    </div>
+  );
+}
+
+function Garage() {
+  return (
+    <>
+      <h1>Who lives in my Garage?</h1>
+      <FirstElement color="red"/>
+    </>
+  );
+}
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
+  <Garage />
 );
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
